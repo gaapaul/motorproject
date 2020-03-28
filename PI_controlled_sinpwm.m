@@ -1,5 +1,7 @@
 clc; close all;
-sim_data = sim('Project_sinePWM_example.slx');
+proportional_term = 30
+integral_term = .05
+sim_data = sim('Project_sinePWM_with_PI_controller.slx');
 t = simout.time;
 Tsigs = []
 iqs = simout.data(:,1);
@@ -28,28 +30,28 @@ for i = 0:5
     ptitle =  sprintf('T%d',i);
     subplot(6,1,i+1); plot(t,simout.data(:,13+i),'-b'); xlabel("Time [s]");  xlim([.45 .55]); title(ptitle)
 end  
-saveas(gcf,"T1toT6_2_step.png")
+saveas(gcf,"T1toT6_sinpwm.png")
 
 figure
 ptitle =  sprintf('Current i_{qs},i_{ds}');
 subplot(2,1,1); plot(t,iqs,'-b'); ylabel('i_{qs}'); xlabel("Time [s]"); title(ptitle)
 subplot(2,1,2); plot(t,ids,'-r'); ylabel('i_{ds}');  
-saveas(gcf,"Project_iqs_ids_2_step.png")
+saveas(gcf,"Project_iqs_ids_sinpwm.png")
 ptitle =  sprintf('Current i_{as},i_{bs}, i_{cs}');
 figure
 subplot(3,1,1); plot(t,ias,'-b'); ylabel('i_{as}'); xlabel("Time [s]"); title(ptitle)
 subplot(3,1,2); plot(t,ibs,'-r'); ylabel('i_{bs}'); xlabel("Time [s]"); 
 subplot(3,1,3); plot(t,ics,'-g'); ylabel('i_{cs}'); xlabel("Time [s]"); 
-saveas(gcf,"Project_iasbscs_2_step.png")
+saveas(gcf,"Project_iasbscs_sinpwm.png")
 
 figure
 plot(t,Te); xlabel("Time [s]"); ylabel("Torque [Nm]"); title("Motor Torque")
-saveas(gcf,"Project_Te2_step.png")
+saveas(gcf,"Project_Tesinpwm.png")
 figure
 plot(t,rpm); xlabel("Time [s]"); ylabel("RPM"); title("Motor Speed")
-saveas(gcf,"Project_rpm2_step.png")
+saveas(gcf,"Project_rpmsinpwm.png")
 
 figure
 plot(t,Vab); xlabel("Time [s]"); ylabel("Voltage"); xlim([.45 .55]); title("Voltage ab")
-saveas(gcf,"Project_vab1_step.png")
+saveas(gcf,"Project_vabsinpwm.png")
 
