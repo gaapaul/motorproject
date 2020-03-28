@@ -1,7 +1,7 @@
 clc; close all;
 %PI variables
-proportional_term = 1
-integral_term = 1
+proportional_term = 15
+integral_term = .05
 
 
 
