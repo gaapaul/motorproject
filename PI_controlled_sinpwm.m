@@ -1,6 +1,6 @@
 clc; close all;
-proportional_term = 30
-integral_term = .05
+proportional_term = 25
+integral_term = .025
 sim_data = sim('Project_sinePWM_with_PI_controller.slx');
 t = simout.time;
 Tsigs = []
@@ -28,7 +28,7 @@ ics = simout.data(:,21);
 figure
 for i = 0:5
     ptitle =  sprintf('T%d',i);
-    subplot(6,1,i+1); plot(t,simout.data(:,13+i),'-b'); xlabel("Time [s]");  xlim([.45 .55]); title(ptitle)
+    subplot(6,1,i+1); plot(t,simout.data(:,13+i),'-b'); xlabel("Time [s]");  xlim([.85 .95cl]); title(ptitle)
 end  
 saveas(gcf,"T1toT6_sinpwm.png")
 
@@ -52,6 +52,6 @@ plot(t,rpm); xlabel("Time [s]"); ylabel("RPM"); title("Motor Speed")
 saveas(gcf,"Project_rpmsinpwm.png")
 
 figure
-plot(t,Vab); xlabel("Time [s]"); ylabel("Voltage"); xlim([.45 .55]); title("Voltage ab")
+plot(t,Vab); xlabel("Time [s]"); ylabel("Voltage"); xlim([.85 .95]); title("Voltage ab")
 saveas(gcf,"Project_vabsinpwm.png")
 
