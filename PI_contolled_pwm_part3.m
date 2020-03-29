@@ -59,3 +59,8 @@ figure
 plot(t,Vab); xlabel("Time [s]"); ylabel("Voltage"); xlim([.85 .95]); title("Voltage ab")
 saveas(gcf,"Project_vab13.png")
 
+figure 
+ptitle =  sprintf('Duty Ratio and Current i_{dc}');
+subplot(2,1,1); plot(t,d,'-b'); ylabel('d duty ratio'); xlabel("Time [s]"); title(ptitle)
+subplot(2,1,2); plot(t,idc,'-r'); ylabel('i_{dc}');  
+saveas(gcf,"Project_idc_duty_3.png")
