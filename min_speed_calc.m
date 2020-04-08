@@ -1,0 +1,24 @@
+clear all
+rs = 3.4
+lss =(1.1 + 3/2*11)*1e-3
+lm = .2
+te = -1
+P = 4
+iqs = -1.67
+ids = -0.25
+vqs = 0
+vsd = 0
+a = -lss*lss
+b = -3*P * lm*lm *rs  /(4*te)
+c = -rs*rs
+wr_plus= (-b + sqrt(b*b-4*a*c))/(2 * a)
+wr_min= (-b - sqrt(b*b-4*a*c))/(2 * a)
+rpm_min = wr_min *  30/pi
+rpm_plus = wr_plus * 30/pi
+wr = rpm_plus * pi / (30)
+Te = 3/2 * P/2 * lm * iqs
+iqs_test = (rs/ (rs*rs + wr*wr * lss*lss)) *(-wr * lm)
+Te = 3/2 * P/2 * lm * iqs_test
+ids_test = iqs * wr *lss / rs
+wrm = 2 / 4  *  wr
+wrm_rpm = wrm * 30/pi
