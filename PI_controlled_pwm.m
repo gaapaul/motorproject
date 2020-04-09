@@ -1,8 +1,7 @@
 clc; close all;
 %PI variables
-proportional_term = 25
+proportional_term = 40 
 integral_term = .025
-
 
 
 sim_data = sim('Project_PI_example.slx');

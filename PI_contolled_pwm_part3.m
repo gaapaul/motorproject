@@ -1,6 +1,6 @@
 clc; close all;
 %PI variables
-proportional_term = 25
+proportional_term = 40 
 integral_term = .025
 
 
@@ -32,7 +32,7 @@ ics = simout.data(:,21);
 figure
 for i = 0:5
     ptitle =  sprintf('T%d',i);
-    subplot(6,1,i+1); plot(t,simout.data(:,13+i),'-b'); xlabel("Time [s]");  xlim([.85 .95]); title(ptitle)
+    subplot(6,1,i+1); plot(t,simout.data(:,13+i),'-b'); xlabel("Time [s]"); title(ptitle)
 end  
 saveas(gcf,"T1toT6_3.png")
 
@@ -56,9 +56,11 @@ plot(t,rpm); xlabel("Time [s]"); ylabel("RPM"); title("Motor Speed")
 saveas(gcf,"Project_rpm3.png")
 
 figure
-plot(t,Vab); xlabel("Time [s]"); ylabel("Voltage"); xlim([.85 .95]); title("Voltage ab")
+plot(t,Vab); xlabel("Time [s]"); ylabel("Voltage");  title("Voltage ab")
 saveas(gcf,"Project_vab13.png")
-
+figure
+plot(t,Vsq); xlabel("Time [s]"); ylabel("Voltage");  title("Voltage sq")
+saveas(gcf,"Project_vsq13.png")
 figure 
 ptitle =  sprintf('Duty Ratio and Current i_{dc}');
 subplot(2,1,1); plot(t,d,'-b'); ylabel('d duty ratio'); xlabel("Time [s]"); title(ptitle)
