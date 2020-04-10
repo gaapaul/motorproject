@@ -1,5 +1,5 @@
 clc; close all;
-proportional_term = 40 
+proportional_term = 50 
 integral_term = .025
 sim_data = sim('Project_sinePWM_with_PI_controller.slx');
 t = simout.time;
@@ -15,7 +15,7 @@ Vsd = simout.data(:,8);
 Vab = simout.data(:,9);
 rot_angle = simout.data(:,10);
 d = simout.data(:,11);
-w = simout.data(:,12);
+m = simout.data(:,12);
 T1 = simout.data(:,13);
 T2 = simout.data(:,14);
 T3 = simout.data(:,15);
@@ -54,4 +54,13 @@ saveas(gcf,"Project_rpmsinpwm.png")
 figure
 plot(t,Vab); xlabel("Time [s]"); ylabel("Voltage"); xlim([.85 .95]); title("Voltage ab")
 saveas(gcf,"Project_vabsinpwm.png")
+figure
+plot(t,Vab); xlabel("Time [s]"); ylabel("Voltage"); xlim([.85 .95]); title("Voltage ab")
+saveas(gcf,"Project_vabsinpwm.png")
 
+
+figure
+ptitle =  sprintf('Current d,m');
+subplot(2,1,1); plot(t,m,'-b'); ylabel('m'); xlabel("Time [s]"); title(ptitle)
+subplot(2,1,2); plot(t,d,'-r'); ylabel('d');  
+saveas(gcf,"Project_d_m_sinpwm.png")

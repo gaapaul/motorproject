@@ -1,10 +1,7 @@
 clc; close all;
 %PI variables
-proportional_term = 40 
+proportional_term = 10 
 integral_term = .025
-
-
-
 sim_data = sim('Project_PI_example_part3.slx');
 t = simout.time;
 Tsigs = []
@@ -19,7 +16,7 @@ Vsd = simout.data(:,8);
 Vab = simout.data(:,9);
 rot_angle = simout.data(:,10);
 d = simout.data(:,11);
-w = simout.data(:,12);
+m = simout.data(:,12);
 T1 = simout.data(:,13);
 T2 = simout.data(:,14);
 T3 = simout.data(:,15);
@@ -66,3 +63,9 @@ ptitle =  sprintf('Duty Ratio and Current i_{dc}');
 subplot(2,1,1); plot(t,d,'-b'); ylabel('d duty ratio'); xlabel("Time [s]"); title(ptitle)
 subplot(2,1,2); plot(t,idc,'-r'); ylabel('i_{dc}');  
 saveas(gcf,"Project_idc_duty_3.png")
+
+figure
+ptitle =  sprintf('Current d,m');
+subplot(2,1,1); plot(t,m,'-b'); ylabel('m'); xlabel("Time [s]"); title(ptitle)
+subplot(2,1,2); plot(t,d,'-r'); ylabel('d');  
+saveas(gcf,"Project_d_m_sinpwm.png")
